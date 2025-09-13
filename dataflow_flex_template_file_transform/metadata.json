@@ -1,0 +1,12 @@
+{
+  "name": "gcs-csv-transform-sm",
+  "description": "Cleans CSV fields using a parameter from Parameter Manager",
+  "parameters": [
+    {
+      "name": "parameter_name",
+      "label": "Parameter Name",
+      "helpText": "The name of the parameter to load from GCP Parameter Manager.",
+      "isOptional": false
+    }
+  ]
+}

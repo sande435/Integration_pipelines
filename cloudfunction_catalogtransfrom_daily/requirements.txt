@@ -1,0 +1,14 @@
+apache-beam[gcp]
+google-cloud-storage
+google-api-core
+google-auth
+google-auth-oauthlib
+requests
+functions-framework
+google-api-python-client
+
+
+#python -m venv venv
+#.\venv\Scripts\activate
+#gcloud config set project ecomm-services-stage
+#pip install --no-cache-dir -r requirements.txt 

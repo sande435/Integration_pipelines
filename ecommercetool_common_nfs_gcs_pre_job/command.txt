@@ -1,0 +1,47 @@
+python df_ecommercetool_common.py `
+  --runner DataflowRunner `
+  --project ecomm-services-stage `
+  --region us-east1 `
+  --temp_location gs://ecomintegrations/temp/ `
+  --staging_location gs://ecomintegrations/staging `
+  --setup_file ./setup.py `
+  --parameter_name transactionaldata_clickdate_adhoc_cj_edw_daily_parameter `
+  --service_account_email integrations-migration-sa@ecomm-services-stage.iam.gserviceaccount.com `
+  --network projects/host-project-265021/global/networks/container-nonprod-vpc `
+  --subnetwork https://www.googleapis.com/compute/v1/projects/host-project-265021/regions/us-east1/subnetworks/gke-nonprod-cluster-ecom-services-primary-subnet `
+  --max_num_workers 10 `
+  --worker_machine_type n1-standard-4 `
+  --disk_size_gb 200 `
+  --save_main_session `
+  --experiments use_runner_v2 `
+  --no_use_public_ips
+
+====
+python df_ecommercetool_common.py `
+  --runner DataflowRunner `
+  --project ecomm-services-stage `
+  --region us-east1 `
+  --setup_file ./setup.py `
+  --temp_location gs://ecomintegrations/temp/ `
+  --staging_location gs://ecomintegrations/staging `
+  --template_location gs://ecomintegrations/templates/nfstogcs_prejob_common_template.json `
+  --service_account_email integrations-migration-sa@ecomm-services-stage.iam.gserviceaccount.com `
+  --no_use_public_ips `
+  --network projects/host-project-265021/global/networks/container-nonprod-vpc `
+  --subnetwork https://www.googleapis.com/compute/v1/projects/host-project-265021/regions/us-east1/subnetworks/gke-nonprod-cluster-ecom-services-primary-subnet
+
+
+
+====
+gcloud dataflow jobs run "df_transactionaldata_clickdate_adhoc_cj_edw_daily_nfs_gcs" `
+  --project=ecomm-services-stage `
+  --region=us-east1 `
+  --gcs-location=gs://ecomintegrations/templates/nfstogcs_prejob_common_template.json `
+  --service-account-email=integrations-migration-sa@ecomm-services-stage.iam.gserviceaccount.com `
+  --network=projects/host-project-265021/global/networks/container-nonprod-vpc `
+  --subnetwork=https://www.googleapis.com/compute/v1/projects/host-project-265021/regions/us-east1/subnetworks/gke-nonprod-cluster-ecom-services-primary-subnet `
+  --parameters=parameter_name=transactionaldata_clickdate_adhoc_cj_edw_daily_parameter `
+  --max-workers=10 `
+  --worker-machine-type=n1-standard-4 `
+  --disable-public-ips `
+  --additional-experiments=use_runner_v2
