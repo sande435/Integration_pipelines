@@ -4,10 +4,10 @@ module "secret_manager" {
 
   secrets = {
     "EDQ_CDW_EDQEMLRESULTS_TF"     = jsonencode({
-      user      = "dwqetltal"
-      password  = "Belk11235!"
-      account   = "belk.east-us-2.azure"
-      warehouse = "CDWBATCH_WH_QA"
+      user      = "dwqetilt"
+      password  = "xxxxxx"
+      account   = "sf.east-us-2.azure"
+      warehouse = "CDW_WH_QA"
       database  = "MARKETINGQA"
       schema    = "SYNCHRONYACC"
       table     = "EDQ_EML_RESULTS"
